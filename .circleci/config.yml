@@ -17,8 +17,16 @@ jobs:
       - checkout
       - run:
           command: cd golang; go run main.go
+  rust:
+    docker:
+      - image: cimg/rust:1.80.1
+    steps:
+      - checkout
+      - run:
+          command: cd rust; cargo run
 workflows:
   test:
     jobs:
       - ruby
       - go
+      - rust
