@@ -3,14 +3,22 @@ version: '2.1'
 orbs:
   ruby: circleci/ruby@2.1.4
 jobs:
-  test:
+  ruby:
     docker:
       - image: cimg/ruby:3.3
     steps:
       - checkout
       - run:
           command: cd ruby; bundle install; bundle exec ruby main.rb
+  go:
+    docker:
+      - image: cimg/go:1.22.6
+    steps:
+      - checkout
+      - run:
+          command: cd golang; go run main.go
 workflows:
   test:
     jobs:
-      - test
+      - ruby
+      - go
