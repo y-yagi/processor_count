@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: cd ruby; bundle exec ruby main.rb
+          command: cd ruby; bundle install; bundle exec ruby main.rb
 workflows:
   test:
     jobs:
